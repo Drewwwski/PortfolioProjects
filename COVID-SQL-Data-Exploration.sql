@@ -1,6 +1,5 @@
 /*
-Covid 19 Data Exploration 
-Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+Covid Data Exploration 
 */
 
 Select *
@@ -18,7 +17,7 @@ order by 1,2
 
 
 -- Total Cases vs Total Deaths
--- Shows likelihood of dying if you contract covid in your country
+-- Shows likelihood of dying if you contract covid in the US
 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
@@ -28,7 +27,7 @@ order by 1,2
 
 
 -- Total Cases vs Population
--- Shows what percentage of population infected with Covid
+-- Shows what percentage of population infected with Covid in the US
 
 Select Location, date, Population, total_cases,  (total_cases/population)*100 as PercentPopulationInfected
 From PortfolioProject..CovidDeaths
@@ -146,7 +145,7 @@ From #PercentPopulationVaccinated
 
 
 
--- Creating View to store data for later visualizations
+-- Creating View to store data 
 
 Create View PercentPopulationVaccinated as
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
